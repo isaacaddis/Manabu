@@ -1,8 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+html,
+body,
+.main{
+  height: 100%;
+  font-family: 'Lato', sans-serif;
 
-a {
-  color: #00B7FF;
+}
+html { 
+  background:  url(https://www.nycgo.com/images/460x285/MidtownSunset_460.gif) no-repeat center center fixed; 
+  background-size: cover;
 }

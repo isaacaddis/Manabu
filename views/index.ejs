@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+	<title><%= title %></title>
+  	<!-- Import CSS -->
+  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/materialize.min.css">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+	<div class="valign-wrapper row main ">
+		<div class="col s12 l4 pull-l4">
+			<h1 class = "center-align white-text"><%= title %></h1>
+			<p class="white-text center-align">An entirely new way to learn things.</p>
+			<div class="row center-align">
+				<a class="btn teal hoverable">Login</a>
+				<a class="btn red hoverable">Signup</a>
+			</div>
+		</div>
+
+	</div>
+
+    <!-- Javascript Stuff -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
   </body>
 </html>
