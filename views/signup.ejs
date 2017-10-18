@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Login - Manabu </title>
+  	<!-- Import CSS -->
+  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/materialize.min.css">
+  </head>
+  <body>  
+    <div class="navbar-fixed">
+      <nav class="blue">
+        <div class="nav-wrapper">
+
+        </div>
+      </nav>
+    </div>
+    <div class="valign-wrapper row main ">
+      <div class="card container col s12 l4 pull-l4">
+        <form>
+          <div class="card-content">
+            <span class="card-title light-text">Welcome Back.</span>
+
+            <% if (message.length > 0) { %>
+                <strong><div class="red-text"><%= message %></div></strong>
+            <% } %>
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="email">Email address</label>
+                <input type="email" class="validate" name="email" id="email" />
+              </div>
+              <div class="input-field col s12">
+                <label for="password">Password </label>
+                <input type="password" class="validate" name="password" id="password" />
+              </div>
+            </div>
+          </div>
+          <div class="card-action right-align">
+            <a class="btn-flat grey-text waves-effect">Sign Up</a>
+            <input type="submit" class="btn green waves-effect waves-light" value="Login">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer"></div>
+    <!-- Javascript Stuff -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
+  </body>
+</html>
