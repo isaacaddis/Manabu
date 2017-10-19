@@ -10,3 +10,6 @@ html {
   background-size: cover;
   overflow: hidden;
 }
+.dotted{
+	border-top: dotted 1px;
+}
