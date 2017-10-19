@@ -4,6 +4,7 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
+var passportlocal = require('passport-local');
 var flash    = require('connect-flash');
 
 var morgan       = require('morgan');
@@ -17,9 +18,11 @@ var configDB = require('./config/database.js');
 var path = require('path');
 var app = express();
 
+app.use(flash());
+
 //Application Components
 require('./config/passport')(passport); // pass passport for configuration
-require('./routes/index.js')/*(app,passport)*/;
+require('./routes/index.js')(app,passport);
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +42,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'itslityah' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash());
 
 app.use('/', index);
 app.use('/users', users);
