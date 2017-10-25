@@ -12,7 +12,7 @@
     <%- include('partials/navbar') %>
     <div class="valign-wrapper row main ">
       <div class="card container col s12 l4 pull-l4">
-        <form action = "/signup" method= "POST">
+        <form action = "/signup" method= "post">
           <div class="card-content">
             <span class="card-title light-text">Sign Up</span>
             <div class="row">
@@ -45,5 +45,16 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+        apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
+        authDomain: "manabu-92d3d.firebaseapp.com",
+        databaseURL: "https://manabu-92d3d.firebaseio.com"
+      };
+      firebase.initializeApp(config);
+    </script>
   </body>
 </html>

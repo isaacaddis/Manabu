@@ -17,13 +17,22 @@ var users = require('./routes/users');
 var configDB = require('./config/database.js');
 var path = require('path');
 var app = express();
-
-app.use(flash());
-
-//Application Components
-require('./config/passport')(passport); // pass passport for configuration
-require('./routes/index.js')(app,passport);
-
+var firebase = require("firebase");
+// mongoose.connect(configDB.url, {
+//   useMongoClient: true
+// });
+// firebase.initializeApp({
+//   serviceAccount:"./Manabu-c2f7a262c8e4.json",
+//   databaseURL:"https://manabu-92d3d.firebaseio.com/"
+// });
+// var ref = firebase.database().ref('node-client');
+// var messagesRef = ref.child('messages');
+// messagesRef.set({ 
+//   name: "Travis",
+//   admin:true,
+//   count:1,
+//   text: "Hey guys"
+// });
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -42,15 +51,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'itslityah' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(flash());
+//Application Components
+require('./config/passport')(passport); // pass passport for configuration
+require('./routes/index.js')(app,passport);
 
-app.use('/', index);
-app.use('/users', users);
+// app.use('/', index);
+// app.use('/users', users);
 
-mongoose.connect(configDB.url, {
-  useMongoClient: true
-});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

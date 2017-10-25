@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "manabu-184001",
+  "private_key_id": "c2f7a262c8e437691037448400f624f2fe65ce2f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqdA89gKyXQlQ9\nATsg6XJRDLd9r8YvBz2KZhVZ/a7ZHSjp6DAlzRhBGl59MSDhAU6FxoM7p9jNRdSB\n9PTs0SdzaSydAfQb5V8l+xTyXrz6cTqV/FlH77xaKCsCkSrD1rwJfEQRQnMUH3OC\nkouHhwjl/a54EgZmMJ4nA/DhxnX9u7w9K6TpJZFgTFn5f4aUc/cue7KH2gP+nPpT\nWuuCGG/QVxzldzAzelR7H+APsIv28AzE9l4+s4Pc25urLrEYY3Sy/2erdV5Cc0Fd\n6Ja8K1SNHz0a1rul9RMsyJFCiXAy+EgSfobcj4VAdzIMnx9J/XM7y0a46KScdL1v\nPvgi0gBXAgMBAAECggEABapYPA9bRHiBR1v8S/NKyAzcPvzAYXqBIQvaS9MnL/jA\n9r1Sd0T/Zuy7uCvjCcj1D6LaqlZNCIfKGZgM/Fmyls2Ev6LYtrOPFcYuA5lfyhLU\nd8LVWk1h2kiN3Wm0hed7ViOOOXCim3a04MpranSWz8M+gnknoGLN159oXWi6olV6\nrcpAr0Uyp51lCQV0FghrNwk+uNFKrVpyfOauabXUVc5AjAjP+H7TdO3MRWFv7vPr\nNV9QV4OPwG+bGgQvk4vV+7iH0ww4Q69O+pmxguGKjxsiZT8YCXE6VqIa/RQmm+1v\n7cQqPrGSWEj6R/Hh1BLXYoKZob4RBbJFyQaWfE1lsQKBgQDlzU0qq0erzi+NmHX2\nJVTgjVZCmpXx/k9/0bgUJ23trkx58r1GMMIemY16sZoCPjdsSBJDUH5hpoOHcWeg\nmD5SR/26lAbBLz8MxwINYONtVdEjb1JMC1GdkLZbhBxmg8utUpTdSWj24Cd2N9L6\n9LpHg9+a2fVcA1phWUQvsquADwKBgQC94rAK14nNB7omr1ujEDLYmRRDrUnQSF+I\nJtWCvnrUswTWHMH4IXs+Cl2X50Mz+qi1yiZj9GergJlI2KBBJ7JsAh1OGJHw5wWx\n0+F4Sm/J0q/Xyk36bDej/qHu5dVncCeGbRRCIJYB5ejNJgJIfjXY6yx0DKDBeRSQ\n1zA/9mizOQKBgBS66HMo8FY3S2LilgGWbIm1Nkrb1xr1bgaBzLFEvU3ro0p880YZ\nr+lCwNiInPQG2MkT11HrOPtmIgdd25NJKJYTmHf0Uoeq0207ppu+WcXLMAqaSDpD\n6yDjpQ+sY0N8MCt6f6NWs/lRTz4C2y14VjWNV+aIMvIR+108yEHlRENRAoGAAOO1\n9WcLEzXNDm9V246w3kjhSmveY6ZjJC0iZOllg+eOxz39Pp9Rh3ne9F4192FeNvPK\neD9l2OzSSwAQyB1afZ0I7Bu7W0iJw0p9zOV0XpqpDja5ZMnq/M6tjYPwGvrwhHWw\nWZrzePDNxWA/NH263NhFLgn9GsrpaMBJTpNl7CkCgYEAyj+/2dvUrAtd3AZ96f5b\nGDLHBEFfzFEYr/uh2P53tKoaQpxNrJUGC+nqgiBgZ/o0q82jflOdJkJJszi+ZCJ3\ngb7rr3VrjppAX5YzMe2+xryZ+HWYhetIUAMJzoypzXtDn0zdXr4/GOW6eDwHIkiq\nhnzhlLnGj/YnPaNSuMaDMzc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "manabu@manabu-184001.iam.gserviceaccount.com",
+  "client_id": "114198586118405334320",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/manabu%40manabu-184001.iam.gserviceaccount.com"
+}

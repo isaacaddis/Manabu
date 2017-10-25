@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var users = require('./users')
 
 function isLoggedIn(req, res, next) {
 
@@ -26,11 +27,29 @@ router.get('/login', function(req, res, next) {
     });
 });
 // process the login form
-router.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : false // allow flash messages
-}));
+// router.post('/login', passport.authenticate('local-login', {
+//     successRedirect : '/profile', // redirect to the secure profile section
+//     failureRedirect : '/login', // redirect back to the signup page if there is an error
+//     failureFlash : true // allow flash messages
+// }));
+router.post('/login', function(req, res){
+
+    var userEmail = req.headers['email'];
+    var userPassword = req.headers['password'];
+
+    users.authenticate(userEmail, userPassword,
+
+        function(error, authData) {
+
+            if (error) {
+                return res.status(401).send('Unauthorized');
+            
+            } else {
+                return res.status(200).send(authData);
+        }
+
+    });
+});
 
 /*
 	Signup
@@ -57,10 +76,27 @@ router.get('/logout', function(req, res) {
     Signup Form
 */
 // process the signup form
-router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-}));
+// router.post('/signup', passport.authenticate('local-signup', {
+//     successRedirect : '/profile', // redirect to the secure profile section
+//     failureRedirect : '/signup', // redirect back to the signup page if there is an error
+//     failureFlash : true // allow flash messages
+// }));
+router.post('/signup', function(req, res) {
+
+    var newUserEmail = req.headers['email'];
+    var newUserPass = req.headers['password'];
+
+    users.addUser(newUserEmail, newUserPass, 
+        
+        function(error, uid) {
+        
+            if (error) {
+                return res.status(500).send('Error when creating user');
+            
+            } else {            
+                return res.status(201).send({uid : uid});
+        }
+    });
+});
 
 };
