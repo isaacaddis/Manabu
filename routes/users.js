@@ -1,82 +1,46 @@
 // // load the things we need
 // var mongoose = require('mongoose');
 // var bcrypt   = require('bcrypt-nodejs');
+var firebase = require("firebase");
+var config = {
+  apiKey: "c2f7a262c8e437691037448400f624f2fe65ce2f",
+  authDomain: "manabu-92d3d.firebaseapp.com",
+  databaseURL: "https://manabu-92d3d.firebaseio.com",
+  storageBucket: "manabu-92d3d.appspot.com",
+};
+firebase.initializeApp(config);
+var firebaseRef = firebase.database().ref('node-client');
 
-// // define the schema for our user model
-// var userSchema = mongoose.Schema({
-
-//     local            : {
-//         email        : String,
-//         password     : String,
-//     },
-//     facebook         : {
-//         id           : String,
-//         token        : String,
-//         email        : String,
-//         name         : String
-//     },
-//     twitter          : {
-//         id           : String,
-//         token        : String,
-//         displayName  : String,
-//         username     : String
-//     },
-//     google           : {
-//         id           : String,
-//         token        : String,
-//         email        : String,
-//         name         : String
-//     }
-
-// });
-
-// // methods ======================
-// // generating a hash
-// userSchema.methods.generateHash = function(password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
-
-// // checking if password is valid
-// userSchema.methods.validPassword = function(password) {
-//     return bcrypt.compareSync(password, this.local.password);
-// };
-
-// // create the model for users and expose it to our app
-// module.exports = mongoose.model('User', userSchema);
-var Firebase = require('firebase');
-
-// var firebaseRef = new Firebase('https://manabu-92d3d.firebaseio.com/');
-Firebase.initializeApp({
-  serviceAccount:"./Manabu-c2f7a262c8e4.json",
-  databaseURL:"https://manabu-92d3d.firebaseio.com/"
-});
-var firebaseRef = Firebase.database().ref('node-client');
 function addUser(email, password, callback) {
 
-    Firebase.auth().createUserWithEmailAndPassword({
+    // firebase.auth().createUserWithEmailAndPassword({
 
-        email : email,
-        password : password
+    //     email : email,
+    //     password : password
     
-    }, function(error, userData) {
+    // }, function(error, userData) {
         
-        callback(error, userData.uid);
+    //     callback(error, userData.uid);
 
+    // });
+    email = String(email).trim();
+    password = String(password).trim();
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode+": "+errorMessage);
     });
 }
 
 
 function authenticate(email, password, callback) {
 
-    firebaseRef.authWithPassword({
-    
-        email : email, 
-        password : password
-    
-    }, function(error, authData) {
-    
-        callback(error, authData);
-
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
     });
 
 }

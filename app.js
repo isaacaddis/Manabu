@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var passportlocal = require('passport-local');
 var flash    = require('connect-flash');
+var favicon = require('serve-favicon');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -18,6 +19,23 @@ var configDB = require('./config/database.js');
 var path = require('path');
 var app = express();
 var firebase = require("firebase");
+var admin = require("firebase-admin");
+
+var serviceAccount = require('./Manabu-c2f7a262c8e4.json');
+
+// var config = {
+//   apiKey: "c2f7a262c8e437691037448400f624f2fe65ce2f",
+//   authDomain: "manabu-92d3d.firebaseapp.com",
+//   databaseURL: "https://manabu-92d3d.firebaseio.com",
+//   storageBucket: "manabu-92d3d.appspot.com",
+// };
+// firebase.initializeApp(config);
+// var firebaseRef = firebase.database().ref('node-client');
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://manabu-92d3d.firebaseio.com"
+// });
 // mongoose.connect(configDB.url, {
 //   useMongoClient: true
 // });
@@ -40,7 +58,7 @@ app.set('view engine', 'ejs');
 //Middlewares
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

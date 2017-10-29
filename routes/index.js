@@ -86,17 +86,7 @@ router.post('/signup', function(req, res) {
     var newUserEmail = req.headers['email'];
     var newUserPass = req.headers['password'];
 
-    users.addUser(newUserEmail, newUserPass, 
-        
-        function(error, uid) {
-        
-            if (error) {
-                return res.status(500).send('Error when creating user');
-            
-            } else {            
-                return res.status(201).send({uid : uid});
-        }
-    });
+    users.addUser(newUserEmail, newUserPass);
 });
 
 };
