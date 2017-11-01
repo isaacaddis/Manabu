@@ -53,9 +53,11 @@ require('./routes/index.js')(app,passport);
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+  res.status(404);
+  res.send("404",404);
 });
 // error handler
 app.use(function(err, req, res, next) {
