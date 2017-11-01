@@ -23,35 +23,6 @@ var admin = require("firebase-admin");
 
 var serviceAccount = require('./Manabu-c2f7a262c8e4.json');
 
-// var config = {
-//   apiKey: "c2f7a262c8e437691037448400f624f2fe65ce2f",
-//   authDomain: "manabu-92d3d.firebaseapp.com",
-//   databaseURL: "https://manabu-92d3d.firebaseio.com",
-//   storageBucket: "manabu-92d3d.appspot.com",
-// };
-// firebase.initializeApp(config);
-// var firebaseRef = firebase.database().ref('node-client');
-
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://manabu-92d3d.firebaseio.com"
-// });
-// mongoose.connect(configDB.url, {
-//   useMongoClient: true
-// });
-// firebase.initializeApp({
-//   serviceAccount:"./Manabu-c2f7a262c8e4.json",
-//   databaseURL:"https://manabu-92d3d.firebaseio.com/"
-// });
-// var ref = firebase.database().ref('node-client');
-// var messagesRef = ref.child('messages');
-// messagesRef.set({ 
-//   name: "Travis",
-//   admin:true,
-//   count:1,
-//   text: "Hey guys"
-// });
-// View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -61,7 +32,7 @@ app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

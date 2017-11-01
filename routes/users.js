@@ -3,40 +3,29 @@
 // var bcrypt   = require('bcrypt-nodejs');
 var firebase = require("firebase");
 var config = {
-  apiKey: "c2f7a262c8e437691037448400f624f2fe65ce2f",
+  apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
   authDomain: "manabu-92d3d.firebaseapp.com",
   databaseURL: "https://manabu-92d3d.firebaseio.com",
   storageBucket: "manabu-92d3d.appspot.com",
 };
-firebase.initializeApp(config);
-var firebaseRef = firebase.database().ref('node-client');
+var app = firebase.initializeApp(config);
+var db = app.database();
+var auth = app.auth();
+// var firebaseRef = firebase.database().ref('node-client');
 
-function addUser(email, password, callback) {
-
-    // firebase.auth().createUserWithEmailAndPassword({
-
-    //     email : email,
-    //     password : password
-    
-    // }, function(error, userData) {
-        
-    //     callback(error, userData.uid);
-
+function addUser(email, password) {
     // });
-    email = String(email).trim();
-    password = String(password).trim();
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode+": "+errorMessage);
-    });
+  var email = email;
+  var password = password;
+  var promise = auth.createUserWithEmailAndPassword(email, password);
+  promise.catch(e=>console.log(e.message));
+  console.log("Signed up user with email: "+email);
 }
 
 
 function authenticate(email, password, callback) {
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
