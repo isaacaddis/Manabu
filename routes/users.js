@@ -36,7 +36,7 @@ function authenticate(email, password, callback) {
 
 
 }
-firebase.auth(),onAuthStateChanged(firebaseUser=>{
+firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     console.log("Logged in.");
   }
