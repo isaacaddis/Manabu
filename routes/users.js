@@ -25,15 +25,25 @@ function addUser(email, password) {
 
 function authenticate(email, password, callback) {
 
-    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+    var promise = auth.signInWithEmailAndPassword(email, password);
+    promise.catch(e=>console.log(e.message));
+    console.log("Signed in user with email: "+email);
+    // .catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
       // ...
-    });
+
 
 }
-
+firebase.auth(),onAuthStateChanged(firebaseUser=>{
+  if(firebaseUser){
+    console.log("Logged in.");
+  }
+  else{
+    console.log("Not logged in.");
+  }
+})
 module.exports = {
 
     addUser : addUser,

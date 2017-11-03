@@ -37,18 +37,11 @@ module.exports = function(router, passport) {
                 // message: req.flash('loginMessage') 
             });
         });
-        // process the login form
-        // router.post('/login', passport.authenticate('local-login', {
-        //     successRedirect : '/profile', // redirect to the secure profile section
-        //     failureRedirect : '/login', // redirect back to the signup page if there is an error
-        //     failureFlash : true // allow flash messages
-        // }));
+
         router.post('/login', function(req, res) {
 
-            var userEmail = req.headers['email'];
-            var userPassword = req.headers['password'];
 
-            users.authenticate(req.body.email, req.body.password,
+            users.authenticate(req.body.email,req.body.password,
 
                 function(error, authData) {
 
@@ -92,5 +85,5 @@ module.exports = function(router, passport) {
               users.addUser(req.body.email,req.body.password);
               res.redirect('/');
             });
-    
+        
     }
