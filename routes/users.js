@@ -41,7 +41,7 @@ firebase.auth().onAuthStateChanged(res,req,next,firebaseUser=>{
     console.log("Logged in.");
     //TODO: Test if flash works this time
     //req.flash('Success', { msg: 'Success! You are logged in.' });
-    return res.session.returnTo || '/';
+    return res.session.returnTo || '/profile';
   }
   else{
     console.log("Not logged in.");
