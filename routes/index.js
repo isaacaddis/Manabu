@@ -64,9 +64,9 @@ module.exports = function(router, passport) {
         /*
             Profile
         */
-        router.get('/profile', isLoggedIn, function(req, res) {
+        router.get('/profile', function(req, res) {
             res.render('profile', {
-                user: req.user
+                user: user.email;
             });
         });
         /*
