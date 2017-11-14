@@ -25,9 +25,14 @@ function addUser(email, password) {
 
 function authenticate(email, password, callback) {
 
-    var promise = auth.signInWithEmailAndPassword(email, password);
+    var promise = auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      console.log(error.Message);
+    });;
     promise.catch(e=>console.log(e.message));
     console.log("Signed in user with email: "+email);
+    window.location = '/';
     // .catch(function(error) {
     //   // Handle Errors here.
     //   var errorCode = error.code;
@@ -36,12 +41,12 @@ function authenticate(email, password, callback) {
 
 
 }
-firebase.auth().onAuthStateChanged(res,req,next,firebaseUser=>{
+firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
+    email = firebaseUser.email;
     console.log("Logged in.");
     //TODO: Test if flash works this time
     //req.flash('Success', { msg: 'Success! You are logged in.' });
-    return res.session.returnTo || '/profile';
   }
   else{
     console.log("Not logged in.");

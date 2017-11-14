@@ -49,7 +49,7 @@ module.exports = function(router, passport) {
                         return res.status(401).send('Unauthorized');
 
                     } else {
-                        return res.status(200).send(authData);
+                        res.redirect("/profile");
                     }
 
                 });
@@ -66,7 +66,7 @@ module.exports = function(router, passport) {
         */
         router.get('/profile', function(req, res) {
             res.render('profile', {
-                user: user.email;
+                
             });
         });
         /*
