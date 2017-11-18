@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class = "repeatingBackground">
   <head>
 	<title>Login - Manabu </title>
   	<!-- Import CSS -->
@@ -47,5 +47,28 @@
       crossorigin="anonymous"></script>
     <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
+      authDomain: "manabu-92d3d.firebaseapp.com",
+      databaseURL: "https://manabu-92d3d.firebaseio.com",
+      storageBucket: "manabu-92d3d.appspot.com",
+    };
+    var app = firebase.initializeApp(config);
+    var db = app.database();
+    var auth = app.auth();
+    firebase.auth().onAuthStateChanged(firebaseUser=>{
+      if(firebaseUser){
+        email = firebaseUser.email;
+        console.log("Logged in.");
+        window.location="/profile";
+        //TODO: Test if flash works this time
+        //req.flash('Success', { msg: 'Success! You are logged in.' });
+      }
+      else{
+        console.log("Not logged in.");
+      }
+    })
+    </script>
   </body>
 </html>

@@ -5,7 +5,7 @@ body,
   font-family: 'Lato', sans-serif;
 
 }
-html { 
+.repeatingBackground { 
   background:  url(https://www.nycgo.com/images/460x285/MidtownSunset_460.gif) no-repeat center center fixed; 
   background-size: cover;
   overflow: hidden;

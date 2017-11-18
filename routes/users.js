@@ -2,6 +2,7 @@
 // var mongoose = require('mongoose');
 // var bcrypt   = require('bcrypt-nodejs');
 var firebase = require("firebase");
+var cookies = require("cookies");
 var config = {
   apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
   authDomain: "manabu-92d3d.firebaseapp.com",
@@ -12,6 +13,21 @@ var app = firebase.initializeApp(config);
 var db = app.database();
 var auth = app.auth();
 // var firebaseRef = firebase.database().ref('node-client');
+
+const setAppCookie = () => firebase.auth().currentUser &&
+    firebase.auth().currentUser.getIdToken().then(token => {
+        cookies.set('token', token, {
+            domain: window.location.hostname,
+            expire: 1 / 24, // One hour
+            path: '/',
+            secure: true // If served over HTTPS
+        });
+    });
+const unsetAppCookie = () => 
+    cookies.remove('token', {
+        domain: window.location.hostname,
+        path: '/',
+    });
 
 function addUser(email, password) {
     // });
@@ -32,7 +48,7 @@ function authenticate(email, password, callback) {
     });;
     promise.catch(e=>console.log(e.message));
     console.log("Signed in user with email: "+email);
-    window.location = '/';
+    // window.location = '/';
     // .catch(function(error) {
     //   // Handle Errors here.
     //   var errorCode = error.code;
@@ -45,6 +61,8 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     email = firebaseUser.email;
     console.log("Logged in.");
+    setAppCookie();
+    setInterval(setAppCookie, 3500);
     //TODO: Test if flash works this time
     //req.flash('Success', { msg: 'Success! You are logged in.' });
   }
