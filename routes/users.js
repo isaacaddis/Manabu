@@ -57,19 +57,7 @@ function authenticate(email, password, callback) {
 
 
 }
-firebase.auth().onAuthStateChanged(firebaseUser=>{
-  if(firebaseUser){
-    email = firebaseUser.email;
-    console.log("Logged in.");
-    setAppCookie();
-    setInterval(setAppCookie, 3500);
-    //TODO: Test if flash works this time
-    //req.flash('Success', { msg: 'Success! You are logged in.' });
-  }
-  else{
-    console.log("Not logged in.");
-  }
-})
+
 module.exports = {
 
     addUser : addUser,

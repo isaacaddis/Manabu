@@ -25,9 +25,7 @@ module.exports = function(router, passport) {
 
         /* GET home page. */
         router.get('/', function(req, res, next) {
-            res.render('index', {
-                title: 'Manabu'
-            });
+            res.render('/index');
         });
         /*
             Login

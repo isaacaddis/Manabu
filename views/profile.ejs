@@ -21,7 +21,7 @@
                   <h4 class = "center-align">Spanish (language)</h4>
                 </div>
                 <div class="card-action">
-                  <center><a href="/spanish" class = "center-align btn green lighten-1">Play</a></center>
+                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
                 </div>
               </div>
             </div>
@@ -49,7 +49,7 @@
                   <h4 class = "center-align">Mandarin Chinese (language)</h4>
                 </div>
                 <div class="card-action">
-                  <center><a href="/mandarin" class = "center-align  btn green lighten-1">Play</a></center>
+                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
                   <h4 class = "center-align">Biology (subject)</h4>
                 </div>
                 <div class="card-action">
-                  <center><a href="/biology" class = "center-align  btn green lighten-1">Play</a></center>
+                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
                 </div>
               </div>
             </div>
@@ -76,5 +76,29 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
+    <script type="text/javascript">
+    var email;
+    var config = {
+      apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
+      authDomain: "manabu-92d3d.firebaseapp.com",
+      databaseURL: "https://manabu-92d3d.firebaseio.com",
+      storageBucket: "manabu-92d3d.appspot.com",
+    };
+    var app = firebase.initializeApp(config);
+    var db = app.database();
+    var auth = app.auth();
+    firebase.auth().onAuthStateChanged(firebaseUser=>{
+      if(firebaseUser){
+        email = firebaseUser.email;
+        console.log("Logged in.");
+        window.location="/profile";
+        //TODO: Test if flash works this time
+        //req.flash('Success', { msg: 'Success! You are logged in.' });
+      }
+      else{
+        console.log("Not logged in.");
+      }
+    });
+    </script>
   </body>
 </html>
