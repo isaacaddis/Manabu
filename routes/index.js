@@ -85,5 +85,19 @@ module.exports = function(router, passport) {
               users.addUser(req.body.email,req.body.password);
               res.redirect('/');
             });
-        
+        /*
+            For all the subjects
+        */
+        router.get('/spanish', function(req, res) {
+            res.render('spanish');
+        });
+        router.get('/mandarin', function(req, res) {
+            res.render('mandarin');
+        });
+        router.get('/japanese', function(req, res) {
+            res.render('japanese');
+        });
+        router.get('/biology', function(req, res) {
+            res.render('biology');
+        });
     }
