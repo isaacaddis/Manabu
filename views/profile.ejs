@@ -9,8 +9,16 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/materialize.min.css">
   </head>
   <body class = "grey lighten-3">  
-    <%- include('partials/navbar',{page:'Profile'}) %>
-    <h2 class="center-align">Welcome.</h2>
+    <div class="navbar-fixed">
+      <nav class="green">
+        <div class="nav-wrapper">
+        <ul>
+          <a class = "right" href="/logout">Logout</a>
+        </ul>
+        </div>
+      </nav>
+    </div>
+    <h2 class="center-align">Welcome <span id="email"></span></h2>
     <div class="container">
       <div class="row">
         <div class="col s12 m12">
@@ -76,29 +84,28 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script type="text/javascript">
-    var email;
-    var config = {
-      apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
-      authDomain: "manabu-92d3d.firebaseapp.com",
-      databaseURL: "https://manabu-92d3d.firebaseio.com",
-      storageBucket: "manabu-92d3d.appspot.com",
-    };
-    var app = firebase.initializeApp(config);
-    var db = app.database();
-    var auth = app.auth();
-    firebase.auth().onAuthStateChanged(firebaseUser=>{
-      if(firebaseUser){
-        email = firebaseUser.email;
-        console.log("Logged in.");
-        window.location="/profile";
-        //TODO: Test if flash works this time
-        //req.flash('Success', { msg: 'Success! You are logged in.' });
-      }
-      else{
-        console.log("Not logged in.");
-      }
-    });
+    (function($) {
+        var config = {
+          apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
+          authDomain: "manabu-92d3d.firebaseapp.com",
+          databaseURL: "https://manabu-92d3d.firebaseio.com",
+          storageBucket: "manabu-92d3d.appspot.com",
+        };
+        var app = firebase.initializeApp(config);
+        var auth = app.auth();
+        var email;
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            email = user.email;
+          } else {
+            // No user is signed in.
+            email = "null lol";
+          }
+        });
+        $("#email").html(email);
+    })(jQuery);
     </script>
   </body>
 </html>

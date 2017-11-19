@@ -57,7 +57,14 @@ function authenticate(email, password, callback) {
 
 
 }
-
+function logOut(){
+  var promise = firebase.auth().signOut().catch(function(error){
+    var errorCode = error.code;
+    console.log(error.Message);
+  });
+  promise.catch(e=>console.log(e.message));
+  console.log("Successfully logged out.");
+}
 module.exports = {
 
     addUser : addUser,

@@ -52,7 +52,15 @@ module.exports = function(router, passport) {
 
                 });
         });
-
+        router.get('/logout', function(req, res){
+            var promise = firebase.auth().signOut().catch(function(error){
+              var errorCode = error.code;
+              console.log(error.Message);
+            });
+            promise.catch(e=>console.log(e.message));
+            console.log("Successfully logged out.");
+            res.redirect('/');        
+        });
         /*
             Signup
         */
@@ -87,7 +95,8 @@ module.exports = function(router, passport) {
             For all the subjects
         */
         router.get('/spanish', function(req, res) {
-            res.render('spanish');
+            res.render('spanish',{
+            });
         });
         router.get('/mandarin', function(req, res) {
             res.render('mandarin');
