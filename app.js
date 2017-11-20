@@ -7,17 +7,22 @@ var passport = require('passport');
 var passportlocal = require('passport-local');
 var flash    = require('connect-flash');
 var favicon = require('serve-favicon');
-
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var http = require('http');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var configDB = require('./config/database.js');
 var path = require('path');
 var app = express();
+// Socket.io
+var socketio = require('socket.io');
+var server = http.Server(app);
+var io = socketio(server);
+
 var firebase = require("firebase");
 var admin = require("firebase-admin");
 
@@ -25,6 +30,7 @@ var serviceAccount = require('./Manabu-c2f7a262c8e4.json');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 //Middlewares
 
@@ -45,6 +51,7 @@ app.use(flash());
 require('./config/passport')(passport); // pass passport for configuration
 require('./routes/index.js')(app,passport);
 
+server.listen(8080);
 // app.use('/', index);
 // app.use('/users', users);
 
@@ -68,5 +75,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+/*
+	Socket.io stuff
+*/
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 module.exports = app;

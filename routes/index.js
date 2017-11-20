@@ -71,9 +71,7 @@ module.exports = function(router, passport) {
             Profile
         */
         router.get('/profile', function(req, res) {
-            res.render('profile', {
-                
-            });
+            res.render('profile');
         });
         /*
             Logout

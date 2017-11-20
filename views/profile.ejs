@@ -1,111 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>Profile - Manabu </title>
+
+<head>
+    <title>Profile - Manabu </title>
     <!-- Import CSS -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" type="text/css" href="/stylesheets/materialize.min.css">
-  </head>
-  <body class = "grey lighten-3">  
+</head>
+
+<body class="grey lighten-3">
     <div class="navbar-fixed">
-      <nav class="green">
-        <div class="nav-wrapper">
-        <ul>
-          <a class = "right" href="/logout">Logout</a>
-        </ul>
-        </div>
-      </nav>
+        <nav class="green">
+            <div class="nav-wrapper">
+                <ul>
+                    <a class="right" href="/logout">Logout</a>
+                </ul>
+            </div>
+        </nav>
     </div>
     <h2 class="center-align">Welcome <span id="email"></span></h2>
     <div class="container">
-      <div class="row">
-        <div class="col s12 m12">
-          <div class="col s12 m6">
-            <div class="card horizontal white">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <h4 class = "center-align">Spanish (language)</h4>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="col s12 m6">
+                    <div class="card horizontal white">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="center-align">Spanish (language)</h4>
+                            </div>
+                            <div class="card-action">
+                                <center><a href="#" class="center-align btn red darken-4">IN DEV</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-action">
-                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
+                <div class="col s12 m6">
+                    <div class="card horizontal white">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="center-align">Japanese (language)</h4>
+                            </div>
+                            <div class="card-action">
+                                <center><a href="/japanese" class="center-align  btn green lighten-1">Play</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col s12 m6">
-            <div class="card horizontal white">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <h4 class = "center-align">Japanese (language)</h4>
-                </div>
-                <div class="card-action">
-                  <center><a href="/japanese" class = "center-align  btn green lighten-1">Play</a></center>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m12">
-          <div class="col s12 m6 ">
-            <div class="card horizontal white">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <h4 class = "center-align">Mandarin Chinese (language)</h4>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="col s12 m6 ">
+                    <div class="card horizontal white">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="center-align">Mandarin Chinese (language)</h4>
+                            </div>
+                            <div class="card-action">
+                                <center><a href="#" class="center-align btn red darken-4">IN DEV</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-action">
-                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
+                <div class="col s12 m6">
+                    <div class="card horizontal white">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="center-align">Biology (subject)</h4>
+                            </div>
+                            <div class="card-action">
+                                <center><a href="#" class="center-align btn red darken-4">IN DEV</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col s12 m6">
-            <div class="card horizontal white">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <h4 class = "center-align">Biology (subject)</h4>
-                </div>
-                <div class="card-action">
-                  <center><a href="#" class = "center-align btn red darken-4">IN DEV</a></center>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
     <div class="footer"></div>
     <!-- Javascript Stuff -->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src = "/javascripts/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/javascripts/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script type="text/javascript">
-    (function($) {
-        var config = {
-          apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
-          authDomain: "manabu-92d3d.firebaseapp.com",
-          databaseURL: "https://manabu-92d3d.firebaseio.com",
-          storageBucket: "manabu-92d3d.appspot.com",
-        };
-        var app = firebase.initializeApp(config);
-        var auth = app.auth();
-        var email;
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            email = user.email;
-          } else {
-            // No user is signed in.
-            email = "null lol";
-          }
-        });
-        $("#email").html(email);
-    })(jQuery);
+        (function($) {
+            var config = {
+                apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
+                authDomain: "manabu-92d3d.firebaseapp.com",
+                databaseURL: "https://manabu-92d3d.firebaseio.com",
+                storageBucket: "manabu-92d3d.appspot.com",
+            };
+            var app = firebase.initializeApp(config);
+            var auth = app.auth();
+            var user = firebase.auth().currentUser;
+            var email = user.email
+            $("#email").html(email);
+        })(jQuery);
     </script>
-  </body>
+</body>
+
 </html>
