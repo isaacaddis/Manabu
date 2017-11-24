@@ -51,6 +51,7 @@ module.exports = function(router, passport) {
                     }
 
                 });
+         ```res.redirect('/profile');
         });
         router.get('/logout', function(req, res){
             var promise = firebase.auth().signOut().catch(function(error){
