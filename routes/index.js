@@ -4,6 +4,11 @@ var passport = require('passport');
 var users = require('./users')
 var qs = require('querystring');
 var firebase = require('firebase');
+var admin = require("firebase-admin");
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://manabu-92d3d.firebaseio.com"
+});
 var config = {
   apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
   authDomain: "manabu-92d3d.firebaseapp.com",
@@ -35,7 +40,20 @@ module.exports = function(router, passport) {
                 // message: req.flash('loginMessage') 
             });
         });
+        router.get('/token', function(req, res){
 
+           // input value from search
+          var idToken = req.query.idToken;
+          admin.auth().verifyIdToken(idToken)
+            .then(function(decodedToken) {
+              var uid = decodedToken.uid;
+
+              // ...
+            }).catch(function(error) {
+              // Handle error
+              console.log("Error in verifying token")
+            });
+        });
         router.post('/login', function(req, res) {
 
 

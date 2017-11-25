@@ -89,19 +89,15 @@
     <script type="text/javascript" src="/javascripts/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
     <script type="text/javascript">
-        (function($) {
-            var config = {
-                apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
-                authDomain: "manabu-92d3d.firebaseapp.com",
-                databaseURL: "https://manabu-92d3d.firebaseio.com",
-                storageBucket: "manabu-92d3d.appspot.com",
-            };
-            var app = firebase.initializeApp(config);
-            var auth = app.auth();
-            var user = firebase.auth().currentUser;
-            var email = user.email
-            $("#email").html(email);
-        })(jQuery);
+        firebase.auth().currentUser.getToken(/* forceRefresh */ true).then(function(idToken) {
+          // Send token to your backend via HTTPS
+          parameters={idToken:idToken};
+          $.get('/token',parameters);
+          console("Sent request to /token");
+        }).catch(function(error) {
+          // Handle error
+          console.log("Error in retrieving token.")
+        });
     </script>
 </body>
 
