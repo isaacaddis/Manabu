@@ -41,7 +41,7 @@ module.exports = function(router, passport) {
 
             users.authenticate(req.body.email,req.body.password,
 
-                function(error, authData) {
+                function(error) {
 
                     if (error) {
                         return res.status(401).send('Unauthorized');
@@ -51,7 +51,7 @@ module.exports = function(router, passport) {
                     }
 
                 });
-         ```res.redirect('/profile');
+            res.redirect('/profile');
         });
         router.get('/logout', function(req, res){
             var promise = firebase.auth().signOut().catch(function(error){

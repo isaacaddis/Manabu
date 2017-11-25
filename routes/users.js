@@ -39,21 +39,14 @@ function addUser(email, password) {
 }
 
 
-function authenticate(email, password, callback) {
-
+function authenticate(email, password,callback) {
+    console.log("Attempting to sign in user with email: "+email);
     var promise = auth.signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       console.log(error.Message);
     });;
-    promise.catch(e=>console.log(e.message));
     console.log("Signed in user with email: "+email);
-    // window.location = '/';
-    // .catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-      // ...
 
 
 }

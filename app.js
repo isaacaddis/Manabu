@@ -51,7 +51,7 @@ app.use(flash());
 require('./config/passport')(passport); // pass passport for configuration
 require('./routes/index.js')(app,passport);
 
-server.listen(8080);
+server.listen(7070);
 // app.use('/', index);
 // app.use('/users', users);
 
