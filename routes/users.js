@@ -3,6 +3,11 @@
 // var bcrypt   = require('bcrypt-nodejs');
 var firebase = require("firebase");
 var cookies = require("cookies");
+var admin = require("firebase-admin");
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://manabu-92d3d.firebaseio.com"
+});
 var config = {
   apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
   authDomain: "manabu-92d3d.firebaseapp.com",
@@ -14,21 +19,18 @@ var db = app.database();
 var auth = app.auth();
 // var firebaseRef = firebase.database().ref('node-client');
 
-const setAppCookie = () => firebase.auth().currentUser &&
-    firebase.auth().currentUser.getIdToken().then(token => {
-        cookies.set('token', token, {
-            domain: window.location.hostname,
-            expire: 1 / 24, // One hour
-            path: '/',
-            secure: true // If served over HTTPS
-        });
-    });
-const unsetAppCookie = () => 
-    cookies.remove('token', {
-        domain: window.location.hostname,
-        path: '/',
-    });
-
+function verifyToken(idToken){
+    admin.auth().verifyIdToken(idToken)
+      .then(function(decodedToken) {
+        var uid = decodedToken.uid;
+        return uid;
+        // ...
+      }).catch(function(error) {
+        // Handle error
+        console.log("Error in verifying token");
+        return 0;
+      });
+}
 function addUser(email, password) {
     // });
   var email = email;

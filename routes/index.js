@@ -4,11 +4,7 @@ var passport = require('passport');
 var users = require('./users')
 var qs = require('querystring');
 var firebase = require('firebase');
-var admin = require("firebase-admin");
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: "https://manabu-92d3d.firebaseio.com"
-});
+var idToken;
 var config = {
   apiKey: "AIzaSyBlWu-f-KRzw1Z-wKROqV7aqlzKjhu_lTw",
   authDomain: "manabu-92d3d.firebaseapp.com",
@@ -25,6 +21,18 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+}
+function verifyToken(idToken){
+    admin.auth().verifyIdToken(idToken)
+      .then(function(decodedToken) {
+        var uid = decodedToken.uid;
+        return uid;
+        // ...
+      }).catch(function(error) {
+        // Handle error
+        console.log("Error in verifying token");
+        return 0;
+      });
 }
 module.exports = function(router, passport) {
 
@@ -43,17 +51,18 @@ module.exports = function(router, passport) {
         router.get('/token', function(req, res){
 
            // input value from search
-          var idToken = req.query.idToken;
-          admin.auth().verifyIdToken(idToken)
-            .then(function(decodedToken) {
-              var uid = decodedToken.uid;
-
-              // ...
-            }).catch(function(error) {
-              // Handle error
-              console.log("Error in verifying token")
-            });
+          idToken = req.query.idToken;
+          res.redirect('/profile');
         });
+        /*
+            Profile
+        */
+        router.get('/profile', function(req, res) {
+            res.render('profile');
+        });
+        /*
+            For login form
+        */
         router.post('/login', function(req, res) {
 
 
@@ -85,12 +94,6 @@ module.exports = function(router, passport) {
         */
         router.get('/signup', function(req, res) {
             res.render('signup');
-        });
-        /*
-            Profile
-        */
-        router.get('/profile', function(req, res) {
-            res.render('profile');
         });
         /*
             Logout
