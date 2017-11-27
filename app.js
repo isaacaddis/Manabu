@@ -83,9 +83,9 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-  socket.on('player scored',function(msg){
-  	io.emit('chat message', msg);
+  socket.on('player scored',function(amount){
+  	io.emit('player scored', amount);
   });
-  
+
 });
 module.exports = app;
