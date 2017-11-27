@@ -48,12 +48,6 @@ module.exports = function(router, passport) {
                 // message: req.flash('loginMessage') 
             });
         });
-        router.get('/token', function(req, res){
-
-           // input value from search
-          idToken = req.query.idToken;
-          res.redirect('/profile');
-        });
         /*
             Profile
         */
@@ -77,8 +71,7 @@ module.exports = function(router, passport) {
                         res.redirect("/profile");
                     }
 
-                });
-            res.redirect('/profile');
+                });        
         });
         router.get('/logout', function(req, res){
             var promise = firebase.auth().signOut().catch(function(error){
