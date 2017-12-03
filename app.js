@@ -86,6 +86,7 @@ io.on('connection', function(socket) {
     console.log('a user connected');
     var addedUser = false;
     var numUsers = 0;
+    // on user add
     socket.on('add user', function(username) {
             if (addedUser) return;
             socket.username = username;
@@ -109,7 +110,7 @@ io.on('connection', function(socket) {
       socket.broadcast.emit('player scored',{
         username:username;
         points:data;
-      })
+      });
     });
     socket.on('disconnect', function() {
     console.log('user disconnected');

@@ -40,16 +40,27 @@ function addPoints2(amount) {
 /*
 	Socket.io Things
 */
-// socket.on('player scored', function(amount) {
-//     passToast("Player scored: " + amount);
-// });
+var ready = confirm("Ready to play?");
+
+if(ready){
+    // random 5 digit number
+    socket.emit('add user', Math.floor(Math.random()*90000) + 10000);
+    passToast('Successfully added to game. Waiting for player');
+}
+else{
+    passToast("Not ready. Redirecting to profile.");
+    window.location = "/profile";
+}
+
 socket.on('counter', function(amount){
     $('#timer').html(amount);
 });
 socket.on('timer over'){
     $('#mainGame').html('<h2 class = "light center-align">Game over!</h2><p class = "center-align> Go back to <a href = "/profile"> your profile </a></p>');
 }
-socket
+socket.on('player scored', function(amount){
+    passToast('Your opponent scored '+amount+ ' points!')
+});
 /*
 	Game logic
 */
