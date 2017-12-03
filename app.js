@@ -86,6 +86,7 @@ io.on('connection', function(socket) {
     console.log('a user connected');
     var addedUser = false;
     var numUsers = 0;
+    var points;
     // on user add
     socket.on('add user', function(username) {
             if (addedUser) return;
@@ -100,18 +101,23 @@ io.on('connection', function(socket) {
                     counter--;
                     if (counter == 0) {
                         //handle this on the client
-                        socket.broadcast.emit('timer over');
+                        socket.broadcast.emit('timer over','Time\'s up, so no one wins!');
                         clearInterval(winnerCountdown);
                     }
                 });
             }
     });
     socket.on('add points', function(data){
+      points = points + data;
       socket.broadcast.emit('player scored',{
         username:username,
         points:data
       });
+      if(points==2000){
+        socket.broadcast.emit('timer over',socket.username+' wins!');
+      }
     });
+ 
     socket.on('disconnect', function() {
     console.log('user disconnected');
 }); socket.on('player scored', function(amount) {
