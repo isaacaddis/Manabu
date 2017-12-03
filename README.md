@@ -11,6 +11,17 @@ The project is centralized around the observation that students who are more eng
 
 The actual project is made with Node.js using the ExpressJS framework. The back-end of the site is handled with Firebase Cloud Hosting and client-to-server interactions are handled with Socket.io. 
 
+## How to use Manabu
+
+I plan to host the project online soon, but for now:
+
+```
+git clone https://github.com/isaacaddis/Manabu
+cd Manabu
+npm start
+
+```
+
 ## How can I contribute?
 
 I'm open to anyone contributing to this project, just fork and send a pull request! Refer to the Set Up instructions above. 
