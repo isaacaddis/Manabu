@@ -19,7 +19,6 @@ I plan to host the project online soon, but for now:
 git clone https://github.com/isaacaddis/Manabu
 cd Manabu
 npm start
-
 ```
 
 ## How can I contribute?
