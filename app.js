@@ -108,8 +108,8 @@ io.on('connection', function(socket) {
     });
     socket.on('add points', function(data){
       socket.broadcast.emit('player scored',{
-        username:username;
-        points:data;
+        username:username,
+        points:data
       });
     });
     socket.on('disconnect', function() {

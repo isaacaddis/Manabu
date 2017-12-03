@@ -1,5 +1,8 @@
 # Manabu
 
+![Homepage screenshot](screenshot.png "Screenshot")
+
+
 Manabu is a web application backed by Node.js that makes learning competitive.
 
 ## How does it work?
